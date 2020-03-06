@@ -18,7 +18,7 @@ int main(){
 
     std::cout<<"\nUUUUU KOLKO I KRZYZYK\n";
     printBoard(board);
-    while (gameOver(board)==false)
+    while (isSpace(board)==true)
     {
         if(gameOver(board)==false)circle(board);
         if(gameOver(board)==false)cross(board);
