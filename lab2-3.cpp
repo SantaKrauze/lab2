@@ -11,7 +11,7 @@ int main(){
 	for(int i=0;i<n;i++) std::cout<<num[i]<<" ";
 	std::cout<<std::endl;
 	for(int i=1;i<n;i++){
-		for(int j=1;j<n;j++) if (i%j==0) tab[i-1][j-1]=j;
+		for(int j=1;j<n;j++) if (i%j==0) tab[i-1][j-1]=j;//tu sie pojawi dynamika
 	}	
 	
 	return 0;
