@@ -1,18 +1,19 @@
 #include <iostream>
 
-bool isSpace(int board[3][3]);
-void printBoard(int board[3][3]);
-bool gameOver(int board[3][3]);
-bool circle(int board[3][3]);
-bool cross(int board[3][3]);
+enum class field {X,O,_};
+
+bool isSpace(field board[3][3]);
+void printBoard(field board[3][3]);
+bool gameOver(field board[3][3]);
+bool circle(field board[3][3]);
+bool cross(field board[3][3]);
 
 int main(){
-    int k,l;
-    int board[3][3];
-
+    //int k,l;//customowytyp danych typu enum class
+    field board[3][3];
     for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
-                board[i][j]=0;
+                board[i][j]=field::_;
             }
     }
 
@@ -26,22 +27,22 @@ int main(){
     return 0;
 
 }
-void printBoard(int board[3][3]){
+void printBoard(field board[3][3]){
     for (int i = 0; i < 3; i++){
         std::cout<<std::endl;
         for (int j = 0; j < 3; j++){
-            if (board[i][j]==1) std::cout<<"X ";
-            else if (board[i][j]==2) std::cout<<"O ";
+            if (board[i][j]==field::X) std::cout<<"X ";
+            else if (board[i][j]==field::O) std::cout<<"O ";
             else std::cout<<"  ";
         }
     }
 }
-bool circle(int board[3][3]){
+bool circle(field board[3][3]){
     int k,l;
     std::cout<<std::endl<<"Gdzie kolko? Podaj rzad i kolumne:\n";
     std::cin>>k>>l;
-    if(k<4&&l<4&&k>0&&l>0&&board[k-1][l-1]==0){
-        board[k-1][l-1]=2;
+    if(k<4&&l<4&&k>0&&l>0&&board[k-1][l-1]==field::_){
+        board[k-1][l-1]=field::O;
         printBoard(board);
     } 
     else {
@@ -50,13 +51,13 @@ bool circle(int board[3][3]){
     }
     return true;
 }
-bool cross(int board[3][3]){
+bool cross(field board[3][3]){
     int k,l;
     std::cout<<std::endl<<"Gdzie krzyzyk? Podaj rzad i kolumne:\n";
     std::cin>>k>>l;
     
-    if(k<4&&l<4&&k>0&&l>0&&board[k-1][l-1]==0){
-        board[k-1][l-1]=1;
+    if(k<4&&l<4&&k>0&&l>0&&board[k-1][l-1]==field::_){
+        board[k-1][l-1]=field::X;
         printBoard(board);
     } 
     else {
@@ -65,18 +66,19 @@ bool cross(int board[3][3]){
     }
     return true;
 }
-bool gameOver(int board[3][3]){
+bool gameOver(field board[3][3]){
     int o,x=0;
     if (isSpace(board)==false) return true;
-    for (int j = 1; j < 3; j++){
+    for (field j = field::X; j != field::_; j++){
         for (int i = 0; i < 3; i++){
             if (board[i][0]==j&&board[i][1]==j&&board[i][2]==j) return true;
             if (board[0][i]==j&&board[1][i]==j&&board[2][i]==j) return true;
         }
     }
     
-    if (board[0][0]!=0&&board[1][1]!=0&&board[2][2]!=0) return true;
-    if (board[2][0]!=0&&board[1][1]!=0&&board[0][2]!=0) return true;
+    if (board[0][0]==field::X && board[1][1]==field::X && board[2][2]==field::X) return true;
+    if (board[2][0]==field::X && board[1][1]==field::X && board[0][2]==field::X) return true;
+    if (board[0][0]==field::O)
 
     return false;
 }
@@ -84,7 +86,7 @@ bool gameOver(int board[3][3]){
 bool isSpace(int board[3][3]){
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
-            if (board[i][j]==0) return true;
+            if (board[i][j]==-) return true;
         }
     }
     return false;
