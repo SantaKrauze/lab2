@@ -19,11 +19,11 @@ int main(){
 
     std::cout<<"\nUUUUU KOLKO I KRZYZYK\n";
     printBoard(board);
-    while (isSpace(board)==true)
-    {
+    while (gameOver(board)==false){//dodac iteracje pomiedzy funkcjami 
         if(gameOver(board)==false)circle(board);
         if(gameOver(board)==false)cross(board);
     }
+    std::cout<<"Koniec gry\n";
     return 0;
 
 }
@@ -66,27 +66,25 @@ bool cross(field board[3][3]){
     }
     return true;
 }
-bool gameOver(field board[3][3]){
-    int o,x=0;
-    if (isSpace(board)==false) return true;
-    for (field j = field::X; j != field::_; j++){
-        for (int i = 0; i < 3; i++){
-            if (board[i][0]==j&&board[i][1]==j&&board[i][2]==j) return true;
-            if (board[0][i]==j&&board[1][i]==j&&board[2][i]==j) return true;
-        }
-    }
+bool gameOver(field board[3][3]){//iteracja
     
-    if (board[0][0]==field::X && board[1][1]==field::X && board[2][2]==field::X) return true;
-    if (board[2][0]==field::X && board[1][1]==field::X && board[0][2]==field::X) return true;
-    if (board[0][0]==field::O)
-
+    if (isSpace(board)==false) return true;
+    field opt[2]={field::X,field::O};
+    for (int j=0; j<2; j++){
+    	for (int i = 0; i < 3; i++){
+		if (board[i][0]==opt[j] && board[i][1]==opt[j] && board[i][2]==opt[j]) return true;
+        	if (board[0][i]==opt[j] && board[1][i]==opt[j] && board[2][i]==opt[j]) return true;
+    	}
+    	if (board[0][0]==opt[j] && board[1][1]==opt[j] && board[2][2]==opt[j]) return true;
+    	if (board[2][0]==opt[j] && board[1][1]==opt[j] && board[0][2]==opt[j]) return true;
+    }
     return false;
 }
 
-bool isSpace(int board[3][3]){
+bool isSpace(field board[3][3]){
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
-            if (board[i][j]==-) return true;
+            if (board[i][j]==field::_) return true;
         }
     }
     return false;
