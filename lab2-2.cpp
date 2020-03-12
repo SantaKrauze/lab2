@@ -18,5 +18,6 @@ int main(){
 		}
 		std::cout<<std::endl;	
 	}
+	delete tab;
 	return 0;
 }
