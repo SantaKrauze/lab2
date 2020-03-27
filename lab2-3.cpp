@@ -1,7 +1,7 @@
 #include <iostream>
 #include <math.h>
 
-int divisors(int n, int&tab[][]);
+int divisors(int n, int**tab);
 int divQuantity(int n);
 
 int main(){
@@ -18,14 +18,14 @@ int main(){
 	for(int i=0; i<n; i++){//dynamic part two
 		divQuant[i]=divQuantity(num[i]);//makes an array of divisors quantities (MAD)
 		tab[i]=new int[divQuant[i]];
-		std::cout<<"dla i:"<<i+1<<"="<<divQuant[i]<<std::endl;}
+		std::cout<<"dla i:"<<i+1<<"="<<divQuant[i]<<std::endl;
 	}
-	divisors(n);
-	delete tab;
+	divisors(n,tab);
+	//delete tab;
 	return 0;
 }
 
-int divisors(int n, int&tab[][]){//returns the divisprs
+int divisors(int n, int**tab){//returns the divisprs
 	for (int i=2; i*i<=n; i++){
 		if (n%i==0) tab[n-1][i-1]=i;
 	}
