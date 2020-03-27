@@ -1,8 +1,9 @@
 #include <iostream>
 #include <math.h>
 
-int divisors(int n, int**tab, int*divQuant);
+void divisors(int n, int**tab, int*divQuant);
 int divQuantity(int n);
+void print(int**tab, int n, int*divQuant);
 
 int main(){
 	int n=0;
@@ -25,7 +26,12 @@ int main(){
 	return 0;
 }
 
-int divisors(int n, int**tab, int*divQuant){//returns the divisprs
+void print(int**tab, int n, int*divQuant){
+
+}
+
+void divisors(int n, int**tab, int*divQuant){//returns the divisprs
+	tab[n-1][0]=n;
 	for (int i=1; i*i<=n; i++){
 		if (n%i==0){
 			tab[n-1][i-1]=i;
@@ -33,11 +39,6 @@ int divisors(int n, int**tab, int*divQuant){//returns the divisprs
 		}
 		else std::cout<<n<<":"<<i<<"not ok\n";
 	}
-	for(int i=0; i<n; i++){
-		for(int j=0; j<divQuant[i]; j++){
-			std::cout<<"tab["<<i<<"]["<<j<<"]="<<tab[i][j]<<std::endl;}
-	}
-	return 0;
 }
 
 int divQuantity(int n){//returns the quantity of divisors
