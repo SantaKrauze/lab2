@@ -9,20 +9,20 @@ int main(){
 	int n=0;
 	std::cout<<"Podaj N:\n";
 	std::cin>>n;
-	if(n<1) return 0;
+	if(n<=1) return 0;
 	int numbers[n];//holds all the nums from 1-n
 	int divQuant[n];
 	for(int i=0; i<n; i++) numbers[i]=i+1;	
 	int **tab;
 	tab=new int*[n];//dynamic part one
-	//std::cout<<"tab first dim. alloc. ... ok"<<std::endl;
 	for(int i=0; i<n; i++){//dynamic part two
 		divQuant[i]=divQuantity(numbers[i]);//makes an array of divisors quantities (MAD)
 		tab[i]=new int[divQuant[i]];
-		//std::cout<<"dla i:"<<i+1<<"="<<divQuant[i]<<std::endl;
 	}
+
 	divisors(tab,n,divQuant);
 	print(tab,n,divQuant);
+
 	//delete tab;
 	return 0;
 }
@@ -30,7 +30,6 @@ int main(){
 void print(int**tab, int n, int*divQuant){
 	for(int i=0; i<n; i++){
 		for(int j=0; j<divQuant[i]; j++){
-			//std::cout<<"tab["<<i<<"]["<<j<<"]="<<tab[i][j]<<std::endl;
 			std::cout<<tab[i][j]<<"   ";
 		}
 		std::cout<<std::endl;
@@ -38,17 +37,14 @@ void print(int**tab, int n, int*divQuant){
 }
 
 void divisors(int**tab, int n, int*divQuant){//fills the table with divisors
-	//tab[n-1][0]=1;
 	int k=0;
 	for(int i=0; i<n; i++){
 		k=0;
 		for(int j=0; j<i; j++){
 			if ((i+1)%(j+1)==0){
 				tab[i][k]=j+1;
-				std::cout<<(i+1)<<":"<<(j+1)<<"ok"<<"k:"<<k<<std::endl;
 				k++;
 			}
-			else std::cout<<(i+1)<<":"<<(j+1)<<"not ok\n";
 		}
 		tab[i][divQuant[i]-1]=i+1;
 	}
