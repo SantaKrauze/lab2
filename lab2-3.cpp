@@ -1,7 +1,7 @@
 #include <iostream>
 #include <math.h>
 
-void divisors(int**tab,int n,int*numbers, int*divQuant);
+void divisors(int**tab, int n, int*divQuant);
 int divQuantity(int n);
 void print(int**tab, int n, int*divQuant);
 
@@ -21,7 +21,7 @@ int main(){
 		tab[i]=new int[divQuant[i]];
 		//std::cout<<"dla i:"<<i+1<<"="<<divQuant[i]<<std::endl;
 	}
-	divisors(tab,n,numbers,divQuant);
+	divisors(tab,n,divQuant);
 	print(tab,n,divQuant);
 	//delete tab;
 	return 0;
@@ -37,16 +37,18 @@ void print(int**tab, int n, int*divQuant){
 	}
 }
 
-void divisors(int**tab,int n,int*numbers, int*divQuant){//fills the table with divisors
+void divisors(int**tab, int n, int*divQuant){//fills the table with divisors
 	//tab[n-1][0]=1;
-	int j;
+	int k=0;
 	for(int i=0; i<n; i++){
-		for(j=0; j<divQuant[i]; j++){
+		k=0;
+		for(int j=0; j<i; j++){
 			if ((i+1)%(j+1)==0){
-				tab[i][j]=j+1;
-				//std::cout<<n<<":"<<j<<"ok\n";
+				tab[i][k]=j+1;
+				std::cout<<(i+1)<<":"<<(j+1)<<"ok"<<"k:"<<k<<std::endl;
+				k++;
 			}
-			//else std::cout<<n<<":"<<j<<"not ok\n";
+			else std::cout<<(i+1)<<":"<<(j+1)<<"not ok\n";
 		}
 		tab[i][divQuant[i]-1]=i+1;
 	}
