@@ -30,21 +30,25 @@ int main(){
 void print(int**tab, int n, int*divQuant){
 	for(int i=0; i<n; i++){
 		for(int j=0; j<divQuant[i]; j++){
-			std::cout<<"tab["<<i<<"]["<<j<<"]="<<tab[i][j]<<std::endl;
+			//std::cout<<"tab["<<i<<"]["<<j<<"]="<<tab[i][j]<<std::endl;
+			std::cout<<tab[i][j]<<"   ";
 		}
+		std::cout<<std::endl;
 	}
 }
 
 void divisors(int**tab,int n,int*numbers, int*divQuant){//fills the table with divisors
 	//tab[n-1][0]=1;
+	int j;
 	for(int i=0; i<n; i++){
-		for(int j=1; j<divQuant[i]; j++){
-			if (n%j==0){
-				tab[i][j-1]=j;
-				std::cout<<n<<":"<<j<<"ok\n";
+		for(j=0; j<divQuant[i]; j++){
+			if ((i+1)%(j+1)==0){
+				tab[i][j]=j+1;
+				//std::cout<<n<<":"<<j<<"ok\n";
 			}
-			else std::cout<<n<<":"<<j<<"not ok\n";
+			//else std::cout<<n<<":"<<j<<"not ok\n";
 		}
+		tab[i][divQuant[i]-1]=i+1;
 	}
 }
 
