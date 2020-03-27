@@ -22,12 +22,16 @@ int main(){
 		std::cout<<"dla i:"<<i+1<<"="<<divQuant[i]<<std::endl;
 	}
 	divisors(n,tab,divQuant);
+	print(tab,n,divQuant);
 	//delete tab;
 	return 0;
 }
 
 void print(int**tab, int n, int*divQuant){
-
+	for(int i=0; i<n; i++){
+		for(int j=0; j<divQuant[i]; j++){
+			std::cout<<"tab["<<i<<"]["<<j<<"]="<<tab[i][j]<<std::endl;}
+	}
 }
 
 void divisors(int n, int**tab, int*divQuant){//returns the divisprs
