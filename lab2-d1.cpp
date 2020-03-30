@@ -3,7 +3,7 @@
 enum class field {red, blue, empty};
 void move(field **board, int n, int m, int player);
 bool gameOver(field**board, int n, int m);
-void print(field **board, int n, int m);
+void printBoard(field **board, int n, int m);
 int main(){
 	field**board;
 	int n,m;
@@ -14,7 +14,7 @@ int main(){
 		board[i]=new field[m];
 	}
 	field players [2]={field::red, field::blue};
-	print(board, n, m);
+	printBoard(board, n, m);
 	return 0;
 }
 
@@ -32,13 +32,13 @@ bool gameOver(field**board, int n, int m){
 	
 }
 
-void print (field **board, int n, int m){
+void printBoard(field**board, int n, int m){
 	for (int i=0; i<n; i++){
-		std::cout<<std::endl;
+		std::cout<<"aktualnie\n"<<std::endl;
 		for (int j=0; j<m; j++){
 			if (board[i][j]==field::blue) std::cout<<"|B|";
 			else if (board[n][m]==field::red) std::cout<<"|R|";
 			else std::cout<<"| |";
 		}
 	}
-}bool gameOver(field**board, int n, int m);
+}
