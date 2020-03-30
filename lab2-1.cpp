@@ -8,17 +8,17 @@ bool gameOver(field board[3][3]);
 bool fill(int I,field board[3][3]);
 
 int main(){
-    field board[3][3];
+    field board[3][3];//creating empty board
     for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 board[i][j]=field::_;
             }
     }
-    field val[2]={field::O,field::X};
+    
     std::cout<<"\nUUUUU KOLKO I KRZYZYK\n";
     printBoard(board);
     for (int I=0; I!=-1; I++){ 
-        if(gameOver(board)==false)fill(I%2,board);
+        if(gameOver(board)==false)fill(I%2,board);//alternating players with even and odd numbers
 	else break;
     }
     std::cout<<"\nKoniec gry\n";
@@ -36,12 +36,12 @@ void printBoard(field board[3][3]){
     }
 }
 bool fill(int I,field board[3][3]){
-    char opt[2]={'X','O'};
-    field val[2]={field::X,field::O};
+    char opt[2]={'X','O'};//possible players
+    field val[2]={field::X,field::O};//possible moves
     int k,l;
     std::cout<<std::endl<<opt[I]<<" Podaj rzad i kolumne:\n";
     std::cin>>k>>l;
-    if(k<4&&l<4&&k>0&&l>0&&board[k-1][l-1]==field::_){
+    if(k<4&&l<4&&k>0&&l>0&&board[k-1][l-1]==field::_){//if within the board and empty- place X/O
         board[k-1][l-1]=val[I];
         printBoard(board);
     } 
@@ -54,14 +54,14 @@ bool fill(int I,field board[3][3]){
 
 bool gameOver(field board[3][3]){//iteracja
     
-    if (isSpace(board)==false) return true;
+    if (isSpace(board)==false) return true;//if no space on the board- game over
     field opt[2]={field::X,field::O};
     for (int j=0; j<2; j++){
     	for (int i = 0; i < 3; i++){
-		if (board[i][0]==opt[j] && board[i][1]==opt[j] && board[i][2]==opt[j]) return true;
+		if (board[i][0]==opt[j] && board[i][1]==opt[j] && board[i][2]==opt[j]) return true;//vertical and horizontal 
         	if (board[0][i]==opt[j] && board[1][i]==opt[j] && board[2][i]==opt[j]) return true;
     	}
-    	if (board[0][0]==opt[j] && board[1][1]==opt[j] && board[2][2]==opt[j]) return true;
+    	if (board[0][0]==opt[j] && board[1][1]==opt[j] && board[2][2]==opt[j]) return true;//diagonal
     	if (board[2][0]==opt[j] && board[1][1]==opt[j] && board[0][2]==opt[j]) return true;
     }
     return false;
