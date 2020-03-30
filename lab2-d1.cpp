@@ -1,11 +1,12 @@
 #include <iostream>
 
 enum class field {red, blue, empty};
-
+void move(field **board, int n, int m, int player);
 void print(field **board, int n, int m);
 int main(){
 	field**board;
 	int n,m;
+	std::cout<<"CONNECT FOUR\n"<<"Podaj ilosc rzedow i kolumn planszy\n";
 	std::cin>>n>>m;
 	board=new field*[n];
 	for(int i=0; i<n; i++){
@@ -14,6 +15,15 @@ int main(){
 	field players [2]={field::red, field::blue};
 	//print(board, n, m);
 	return 0;
+}
+
+void move(field **board, int n, int m, int player){
+	int col;
+	field options[2]={field::red, field::blue};
+	std::cin>>col;
+	int i=0;
+	while(board[col][i]==field::empty && i<m) i++;
+	board[col][i-1]=options[player];
 }
 
 void print (field **board, int n, int m){
