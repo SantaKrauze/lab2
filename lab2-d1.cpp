@@ -2,17 +2,21 @@
 
 enum class field {red, blue, empty};
 
-void print(field board[n][m]);
+void print(field **board, int n, int m);
 int main(){
+	field**board;
 	int n,m;
 	std::cin>>n>>m;
-	field board [n][m];
+	board=new field*[n];
+	for(int i=0; i<n; i++){
+		board[i]=new field[m];
+	}
 	field players [2]={field::red, field::blue};
-	print(board);
+	//print(board, n, m);
 	return 0;
 }
 
-void print (field board[n][m]){
+void print (field **board, int n, int m){
 	for (int i=0; i<n; i++){
 		std::cout<<std::endl;
 		for (int j=0; j<m; j++){
