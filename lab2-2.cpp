@@ -18,6 +18,7 @@ int main(){
 		}
 		std::cout<<std::endl;	
 	}
-	delete tab;
+	for (int i=0; i<N; i++) delete[] tab[i];
+	delete[] tab;
 	return 0;
 }
