@@ -44,10 +44,10 @@ bool Board::gameOver(){
 int Board::getMove(){
 	int v,h;
 	Board::_print();
-	std::cout<<"Podaj pionowa i pozioma wspolrzedna\n";
+	std::cout<<"\nPodaj pionowa i pozioma wspolrzedna\n";
 	std::cin>>v>>h;
 	_player++;
-	Board::_move(v,h);
+	Board::_move(v-1,h-1);
 	return 0;
 }
 
