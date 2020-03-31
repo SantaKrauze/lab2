@@ -2,50 +2,51 @@
 
 enum class field {red, blue, empty};
 class Board{
-	Board board[4][4][4];
-	public:
-		Board();	
+	
+	public:	
+		//Board();
 		int getMove();
-		bool gameOver(field board[4][4][4]);
+		bool gameOver();
 	private:
-		void _print(Board board);
-		void _move(int i);
+		field _board[4][4][4];
+		void _print();
+		void _move(int v, int h);
 };
 int main(){
-	
-	Board::_print(Board::board);
+	Board board;
+	board.getMove();
 	return 0;
 }
 
-void Board::_print(Board board){
+void Board::_print(){
 	std::cout<<"Drukowanie planszy od dolu\n";
 	for(int i=0; i<4; i++){
 		for(int j=0; j<4; j++){
 			for(int k=0; k<4; k++){
-				//if(Board::board[i][j][k]==field::red) std::cout<<"R";
-				//else if(Board::board[i][j][k]==field::red) std::cout<<"R";
-				//else std::cout<<" ";
+				if(_board[i][j][k]==field::red) std::cout<<"R";
+				else if(_board[i][j][k]==field::blue) std::cout<<"B";
+				else std::cout<<" ";
 			}
 		}	
 	}
 }
 
 int Board::getMove(){
-	int i;
-	Board::_print(Board::board);
-	std::cin>>i;
-	Board::_move(i);
-	return i;
+	int i,j;
+	Board::_print();
+	std::cin>>i>>j;
+	Board::_move(i,j);
+	return 0;
 }
-
+/*
 Board::Board(){
 	for(int i=0; i<4; i++){
 		for(int j=0; j<4; j++){
-			//for(int k=0; k<4; k++) Board::board[i][j][k]=field::empty;
+			for(int k=0; k<4; k++) _board[i][j][k]=field::empty;
 		}	
 	}
 }
-
-void Board::_move(int i){
-	//int i=Board::getMove;
+*/
+void Board::_move(int v, int h){
+	//
 }
