@@ -1,20 +1,24 @@
 #include <iostream>
 
 enum class field {red, blue, empty};
-class Board{
-	
+class Board{	
 	public:	
 		Board();
 		int getMove();
 		bool gameOver();
 	private:
+		field _players[2]={field::red, field::blue};
+		int _player=0;
+		int _boardHeight[4][4];
 		field _board[4][4][4];
 		void _print();
 		void _move(int v, int h);
 };
 int main(){
 	Board board;
-	board.getMove();
+	while(board.gameOver()==false){
+		board.getMove();
+	}
 	return 0;
 }
 
@@ -33,11 +37,17 @@ void Board::_print(){
 	}
 }
 
+bool Board::gameOver(){
+	return false;
+}
+
 int Board::getMove(){
-	int i,j;
+	int v,h;
 	Board::_print();
-	std::cin>>i>>j;
-	Board::_move(i,j);
+	std::cout<<"Podaj pionowa i pozioma wspolrzedna\n";
+	std::cin>>v>>h;
+	_player++;
+	Board::_move(v,h);
 	return 0;
 }
 
@@ -47,8 +57,12 @@ Board::Board(){
 			for(int k=0; k<4; k++) _board[i][j][k]=field::empty;
 		}	
 	}
+	for(int i=0; i<4; i++){
+		for(int j=0; j<4; j++) _boardHeight[i][j]=0;
+	}
 }
 
 void Board::_move(int v, int h){
-	//
+	_board[_boardHeight[v][h]][v][h]=_players[_player%2];
+	_boardHeight[v][h]++;
 }
