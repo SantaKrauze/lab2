@@ -1,9 +1,17 @@
 #include <iostream>
 
 enum class field {red, blue, empty};
-void move(field **board, int n, int m, int player);
-bool gameOver(field**board, int n, int m);
-void printBoard(field **board, int n, int m);
+class Board{
+	public:
+		Board();
+		~Board();
+		void getMove();
+		bool gameOver();
+	private:
+		field _board;
+		void _move(int v, int h);
+		void _print();
+};
 int main(){
 	field**board;
 	int n,m;
@@ -18,7 +26,7 @@ int main(){
 	return 0;
 }
 
-void move(field **board, int n, int m, int player){
+void Board::_move(int v, int h){
 	int col;
 	field options[2]={field::red, field::blue};
 	std::cout<<"Podaj kolumne:\n";
@@ -27,12 +35,7 @@ void move(field **board, int n, int m, int player){
 	while(board[col][i]==field::empty && i<m) i++;
 	board[col][i-1]=options[player];
 }
-
-bool gameOver(field**board, int n, int m){
-	
-}
-
-void printBoard(field**board, int n, int m){
+void Board::_print(){
 	for (int i=0; i<n; i++){
 		std::cout<<"aktualnie\n"<<std::endl;
 		for (int j=0; j<m; j++){
