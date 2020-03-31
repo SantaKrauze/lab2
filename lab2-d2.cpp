@@ -4,7 +4,7 @@ enum class field {red, blue, empty};
 class Board{
 	
 	public:	
-		//Board();
+		Board();
 		int getMove();
 		bool gameOver();
 	private:
@@ -21,11 +21,13 @@ int main(){
 void Board::_print(){
 	std::cout<<"Drukowanie planszy od dolu\n";
 	for(int i=0; i<4; i++){
+		std::cout<<std::endl;
 		for(int j=0; j<4; j++){
+			std::cout<<std::endl;
 			for(int k=0; k<4; k++){
 				if(_board[i][j][k]==field::red) std::cout<<"R";
 				else if(_board[i][j][k]==field::blue) std::cout<<"B";
-				else std::cout<<" ";
+				else std::cout<<"_";
 			}
 		}	
 	}
@@ -38,7 +40,7 @@ int Board::getMove(){
 	Board::_move(i,j);
 	return 0;
 }
-/*
+
 Board::Board(){
 	for(int i=0; i<4; i++){
 		for(int j=0; j<4; j++){
@@ -46,7 +48,7 @@ Board::Board(){
 		}	
 	}
 }
-*/
+
 void Board::_move(int v, int h){
 	//
 }
