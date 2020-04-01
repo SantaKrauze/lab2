@@ -8,11 +8,12 @@ class Board{
 		int getMove();
 		bool gameOver();
 	private:
+		bool _isSpace();
 		field _players[2]={field::red, field::blue};
 		int _player=0;
 		int _boardHeight[4][4];
 		field _board[4][4][4];
 		void _print();
-		void _move(int v, int h);
+		void _move(int vertical, int horizontal);
 };
 #endif

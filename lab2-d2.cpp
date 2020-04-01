@@ -3,7 +3,7 @@
 
 int main(){
 	Board board;
-	while(board.gameOver()==false){
+	while(!board.gameOver()){
 		board.getMove();
 	}
 	return 0;
