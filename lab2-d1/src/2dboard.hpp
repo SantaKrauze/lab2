@@ -12,6 +12,7 @@ class Board{
 		void getMove();
 		bool gameOver();
 	private:
+		bool _isSpace();
 		field **_board;
 		void _move(int col);
 		void _print();
