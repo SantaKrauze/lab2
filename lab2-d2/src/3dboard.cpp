@@ -51,9 +51,10 @@ bool Board::gameOver(){
 int Board::getMove(){
 	int vertical, horizontal;
 	Board::_print();
-	std::cout<<"\nPodaj pionowa i pozioma wspolrzedna\n";
-	std::cin>>vertical>>horizontal;
 	_player=(_player+1)%2;//gives index of player
+	std::string playerName[2]={"Rubinowy","Blekitny"};
+	std::cout<<"\nGracz "<<playerName[_player]<<"\nPodaj pozioma i pionowa wspolrzedna\n";
+	std::cin>>vertical>>horizontal;	
 	Board::_move(vertical-1,horizontal-1);
 	return 0;
 }
@@ -65,9 +66,9 @@ void Board::_print(){
 		for(int j=0; j<4; j++){
 			std::cout<<std::endl;
 			for(int k=0; k<4; k++){
-				if(_board[i][j][k]==field::red) std::cout<<"R";
-				else if(_board[i][j][k]==field::blue) std::cout<<"B";
-				else std::cout<<"_";
+				if(_board[i][j][k]==field::red) std::cout<<"|R|";
+				else if(_board[i][j][k]==field::blue) std::cout<<"|B|";
+				else std::cout<<"|_|";
 			}
 		}	
 	}
