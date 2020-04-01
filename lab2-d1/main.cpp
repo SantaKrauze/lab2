@@ -7,6 +7,6 @@ int main(){
 	while(!board.gameOver()){
 		board.getMove();
 	}
-	std::cout<<"Koniec";
+	std::cout<<"\nKoniec\n";
 	return 0;
 }

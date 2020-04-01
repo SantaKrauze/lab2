@@ -13,20 +13,27 @@ Board::Board(){
 	for(int i=0; i<m; i++) _boardHeight[i]=0;
 }
 Board::~Board(){
-	delete _boardHeight;
+	delete[] _boardHeight;
 	for(int i=0; i<m; i++) delete[] _board[i];
 	delete[] _board;
 }
 
 bool Board::_isSpace(){
 	for(int i=0; i<m; i++){
-		if(_boardHeight[i]<=n) return true;
+		if(_boardHeight[i]<n) return true;//checking if theres space in general
 	}
 	return false;
 }
 
-bool Board::gameOver(){
-	if(!Board::_isSpace()) return false;
+bool Board::gameOver(){//nothing here yet
+	if(!Board::_isSpace()){
+		Board::_print();
+		return true;
+	}
+	int q=0;//quantity of same values in a row (TO DO)
+	for(int i=0; i<n; i++){
+		
+	}
 	return false;
 }
 
@@ -37,13 +44,12 @@ void Board::getMove(){
 	std::string playerName[2]={"rubinowy","blekitny"};
 	std::cout<<"\nGracz "<<playerName[_player]<<"\nPodaj kolumne\n";
 	std::cin>>col;
-	if(col<=n) Board::_move(col-1);
-
+	if(col<=n && _boardHeight[col-1]<n) Board::_move(col-1);//checking if theres space in that column
 }
 
 void Board::_move(int col){
 	_board[_boardHeight[col]][col]=_players[_player];
-	_boardHeight[col]++;
+	_boardHeight[col]++;//updating space in column
 }
 void Board::_print(){
 	for (int i=n-1; i>=0; i--){

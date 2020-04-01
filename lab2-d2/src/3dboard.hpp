@@ -7,12 +7,12 @@ enum class field {red, blue, empty};
 class Board{	
 	public:	
 		Board();
-		int getMove();
+		void getMove();
 		bool gameOver();
 	private:
 		bool _isSpace();
 		field _players[2]={field::red, field::blue};
-		int _player=0;
+		int _player=0;//player index
 		int _boardHeight[4][4];
 		field _board[4][4][4];
 		void _print();

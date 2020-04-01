@@ -48,15 +48,14 @@ bool Board::gameOver(){
 	return false;
 }
 
-int Board::getMove(){
+void Board::getMove(){
 	int vertical, horizontal;
 	Board::_print();
 	_player=(_player+1)%2;//gives index of player
 	std::string playerName[2]={"Rubinowy","Blekitny"};
 	std::cout<<"\nGracz "<<playerName[_player]<<"\nPodaj pozioma i pionowa wspolrzedna\n";
 	std::cin>>vertical>>horizontal;	
-	Board::_move(vertical-1,horizontal-1);
-	return 0;
+	if(vertical<=4 && horizontal<=4) Board::_move(vertical-1,horizontal-1);
 }
 
 void Board::_print(){
