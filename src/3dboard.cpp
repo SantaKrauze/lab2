@@ -23,7 +23,7 @@ bool Board::_isSpace(){
 bool Board::gameOver(){
 	if(!_isSpace())return false;
 	for(int i=0; i<4; i++){
-		for(int j=0; j<4; j++;){//checking straight lines in 3 dimensions
+		for(int j=0; j<4; j++){//checking straight lines in 3 dimensions
 			if(_board[0][i][j]==_players[_player]&&_board[1][i][j]==_players[_player]&&_board[2][i][j]==_players[_player]&&_board[3][i][j]==_players[_player]) return true;
 			if(_board[i][0][j]==_players[_player]&&_board[i][1][j]==_players[_player]&&_board[i][2][j]==_players[_player]&&_board[i][3][j]==_players[_player]) return true;
 			if(_board[i][j][0]==_players[_player]&&_board[i][j][1]==_players[_player]&&_board[i][j][2]==_players[_player]&&_board[i][j][3]==_players[_player]) return true;
@@ -51,7 +51,7 @@ bool Board::gameOver(){
 int Board::getMove(){
 	int vertical, horizontal;
 	Board::_print();
-	std::cout<<_players[_player]<<"\nPodaj pionowa i pozioma wspolrzedna\n";
+	std::cout<<"\nPodaj pionowa i pozioma wspolrzedna\n";
 	std::cin>>vertical>>horizontal;
 	_player=(_player+1)%2;//gives index of player
 	Board::_move(vertical-1,horizontal-1);

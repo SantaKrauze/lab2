@@ -1,6 +1,8 @@
 #ifndef BOARD_HPP
 #define BOARD_HPP
 
+#include <iostream>
+
 enum class field {red, blue, empty};
 class Board{	
 	public:	
