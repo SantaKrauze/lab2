@@ -9,9 +9,9 @@ bool fill(int I,field board[3][3]);
 void setGame(field board[3][3]);
 
 int main(){
-	field board[3][3];//creating empty board
+	field board[3][3];
 	setGame(board);
-	int playerIndex=0;	
+	int playerIndex=0;
 	while (!gameOver(board)){
 		fill(playerIndex,board);
 		playerIndex=(playerIndex+1)%2;
@@ -21,7 +21,7 @@ int main(){
 }
 
 void setGame(field board[3][3]){
-	for (int i = 0; i < 3; i++){
+	for (int i = 0; i < 3; i++){//filling with empty spaces
 		for (int j = 0; j < 3; j++){
 			board[i][j]=field::_;
 		}
@@ -42,21 +42,21 @@ void printBoard(field board[3][3]){
 }
 
 bool fill(int playerIndex,field board[3][3]){
-	char playerSignature[2]={'X','O'};//possible players
-	field player[2]={field::X,field::O};//possible moves
+	char playerSignature[2]={'X','O'};
+	field player[2]={field::X,field::O};
 	int col,row;
 	std::cout<<std::endl<<playerSignature[playerIndex]<<" Podaj rzad i kolumne:\n";
 	std::cin>>col>>row;
-	while(col>4||col<1||row>4||row<1||board[col-1][row-1]!=field::_){
+	while(col>4||col<1||row>4||row<1||board[col-1][row-1]!=field::_){//while space not within the board or not empty - repeat cin
 		std::cout<<"Zle podaj jeszcze raz\n";
     		std::cin>>col>>row;
 	}
-	board[col-1][row-1]=player[playerIndex];
+	board[col-1][row-1]=player[playerIndex];//if all ok - place X/O
 	printBoard(board);
         return true;
 }
 
-bool gameOver(field board[3][3]){//iteracja
+bool gameOver(field board[3][3]){
     
     if (isSpace(board)==false) return true;//if no space on the board- game over
     field player[2]={field::X,field::O};
@@ -74,7 +74,7 @@ bool gameOver(field board[3][3]){//iteracja
 bool isSpace(field board[3][3]){
     for (int i = 0; i < 3; i++){
         for (int j = 0; j < 3; j++){
-            if (board[i][j]==field::_) return true;
+            if (board[i][j]==field::_) return true;//if theres space somewhere - isSpace=true
         }
     }
     return false;
