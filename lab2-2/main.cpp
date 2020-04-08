@@ -1,6 +1,7 @@
 #include <iostream>
 
 void printTable(int**table, int N, int M);
+void fillTable(int**table, int N, int M);
 
 int main(){
 
@@ -12,18 +13,20 @@ int main(){
 	for (int i = 0; i < N; i++){//malloc
 		table[i]=new int[M];
 	}
-
-	for(int i=1; i<=N; i++){//saving to array and printing
-		for(int j=1; j<=M; j++){
-			table[i-1][j-1]=i*j;
-			//std::cout<<i<<"*"<<j<<"="<<table[i-1][j-1]<<" ";
-		}
-		std::cout<<std::endl;	
-	}
+	fillTable(table, N, M);
 	printTable(table, N, M);
 	for (int i=0; i<N; i++) delete[] table[i];//freeing memory
 	delete[] table;
 	return 0;
+}
+
+void fillTable(int**table, int N, int M){
+	for(int i=1; i<=N; i++){//saving to array and printing
+		for(int j=1; j<=M; j++){
+			table[i-1][j-1]=i*j;
+		}
+		std::cout<<std::endl;	
+	}		
 }
 
 void printTable(int**table, int N, int M){
