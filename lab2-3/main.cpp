@@ -33,8 +33,9 @@ int main(){
 void print(int**tab, int n, int*divQuant){
 	std::cout<<"\nTablica dzielnikow:\n";
 	for(int i=0; i<n; i++){
+		std::cout<<"Dzielniki "<<i+1<<":\t";
 		for(int j=0; j<divQuant[i]; j++){
-			std::cout<<tab[i][j]<<"   ";
+			std::cout<<tab[i][j]<<"\t";
 		}
 		std::cout<<std::endl;
 	}
