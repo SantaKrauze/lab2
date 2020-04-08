@@ -6,25 +6,30 @@ bool isSpace(field board[3][3]);
 void printBoard(field board[3][3]);
 bool gameOver(field board[3][3]);
 bool fill(int I,field board[3][3]);
+void setGame(field board[3][3]);
 
 int main(){
-    field board[3][3];//creating empty board
-    for (int i = 0; i < 3; i++){
-            for (int j = 0; j < 3; j++){
-                board[i][j]=field::_;
-            }
-    }
-    
-    std::cout<<"\nUUUUU KOLKO I KRZYZYK\n";
-    printBoard(board);
-    for (int I=0; I!=-1; I++){ 
-        if(gameOver(board)==false)fill(I%2,board);//alternating players with even and odd numbers
-	else break;
-    }
-    std::cout<<"\nKoniec gry\n";
-    return 0;
-
+	field board[3][3];//creating empty board
+	setGame(board);
+	int playerIndex=0;	
+	while (!gameOver(board)){
+		fill(playerIndex,board);
+		playerIndex=(playerIndex+1)%2;
+	}
+    	std::cout<<"\nKoniec gry\n";
+	return 0;
 }
+
+void setGame(field board[3][3]){
+	for (int i = 0; i < 3; i++){
+		for (int j = 0; j < 3; j++){
+			board[i][j]=field::_;
+		}
+	}
+	std::cout<<"\nUUUUU KOLKO I KRZYZYK\n";
+	printBoard(board);
+}
+
 void printBoard(field board[3][3]){
     for (int i = 0; i < 3; i++){
         std::cout<<std::endl;
@@ -35,34 +40,33 @@ void printBoard(field board[3][3]){
         }
     }
 }
-bool fill(int I,field board[3][3]){
-    char opt[2]={'X','O'};//possible players
-    field val[2]={field::X,field::O};//possible moves
-    int k,l;
-    std::cout<<std::endl<<opt[I]<<" Podaj rzad i kolumne:\n";
-    std::cin>>k>>l;
-    if(k<4&&l<4&&k>0&&l>0&&board[k-1][l-1]==field::_){//if within the board and empty- place X/O
-        board[k-1][l-1]=val[I];
-        printBoard(board);
-    } 
-    else {
-        std::cout<<"ZLE\n";
-        return false;
-    }
-    return true;
+
+bool fill(int playerIndex,field board[3][3]){
+	char playerSignature[2]={'X','O'};//possible players
+	field player[2]={field::X,field::O};//possible moves
+	int col,row;
+	std::cout<<std::endl<<playerSignature[playerIndex]<<" Podaj rzad i kolumne:\n";
+	std::cin>>col>>row;
+	while(col>4||col<1||row>4||row<1||board[col-1][row-1]!=field::_){
+		std::cout<<"Zle podaj jeszcze raz\n";
+    		std::cin>>col>>row;
+	}
+	board[col-1][row-1]=player[playerIndex];
+	printBoard(board);
+        return true;
 }
 
 bool gameOver(field board[3][3]){//iteracja
     
     if (isSpace(board)==false) return true;//if no space on the board- game over
-    field opt[2]={field::X,field::O};
+    field player[2]={field::X,field::O};
     for (int j=0; j<2; j++){
     	for (int i = 0; i < 3; i++){
-		if (board[i][0]==opt[j] && board[i][1]==opt[j] && board[i][2]==opt[j]) return true;//vertical and horizontal 
-        	if (board[0][i]==opt[j] && board[1][i]==opt[j] && board[2][i]==opt[j]) return true;
+		if (board[i][0]==player[j] && board[i][1]==player[j] && board[i][2]==player[j]) return true;//vertical and horizontal 
+        	if (board[0][i]==player[j] && board[1][i]==player[j] && board[2][i]==player[j]) return true;
     	}
-    	if (board[0][0]==opt[j] && board[1][1]==opt[j] && board[2][2]==opt[j]) return true;//diagonal
-    	if (board[2][0]==opt[j] && board[1][1]==opt[j] && board[0][2]==opt[j]) return true;
+    	if (board[0][0]==player[j] && board[1][1]==player[j] && board[2][2]==player[j]) return true;//diagonal
+    	if (board[2][0]==player[j] && board[1][1]==player[j] && board[0][2]==player[j]) return true;
     }
     return false;
 }
