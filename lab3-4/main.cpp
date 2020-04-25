@@ -2,6 +2,7 @@
 #include <array>
 #include <vector>
 #include <map>
+#include <string>
 
 class SparseMatrix{	
 	public:
@@ -28,7 +29,7 @@ SparseMatrix::SparseMatrix(){
 void SparseMatrix::addValue(){
 	int row,col;
 	double val;
-	std::cout<<"Podaj rzad i kolumne\n";
+	std::cout<<"\nDodawanie wartosci\n"<<"Podaj rzad i kolumne\n";
 	std::cin>>row>>col;
 	std::cout<<"Podaj wartosc\n";
 	std::cin>>val;
@@ -46,7 +47,7 @@ void SparseMatrix::addValue(int row, int col, double val){
 }
 
 void SparseMatrix::printMatrix(){
-	//printing using _getValue()
+	std::cout<<"\nObecny stan macierzy\n";
 	for(int i = 1; i <= _rows; i++){
 		for(int j = 1; j <= + _columns; j++){
 			if (_matrix[ {i, j} ]!=0){
@@ -59,16 +60,28 @@ void SparseMatrix::printMatrix(){
 }
 
 double SparseMatrix::_getValue(int row, int col){
-	double val = _matrix[ {row,col} ];
-	return val;
+	return _matrix[ {row,col} ];
 }
 
 int main(){
 	std::cout<<"Hello what is this thing\n";
-	SparseMatrix matrix;
-	//switch to adding, printing etc
-	matrix.printMatrix();
-	matrix.addValue();
-	matrix.printMatrix();
+	SparseMatrix matrixA;
+	SparseMatrix matrixB;
+	int option;
+	while(1!=0){
+		std::cout<<"\n1.print \t 2.add value \n";
+		std::cin>>option;
+		switch (option){
+			case 1:
+				matrix.printMatrix();
+				break;
+			case 2:
+
+				matrix.addValue();
+				break;
+			case 3:
+				break;
+		}
+	}
 	return 0;
 }
