@@ -10,7 +10,7 @@ int main(){
 	SparseMatrix matrixB;
 	int option=1;
 	while(option!=0){
-		std::cout<<"\n1.print \t 2.add value \t 0.zakoncz\n";
+		std::cout<<"\n1.pokaz macierz \t 2.dodaj wartosc \t 3.pomnoz przez skalar \t 4.mnozenie macierzy \t 5. dodawanie macierzy \t 0.zakoncz\n";
 		std::cin>>option;
 		switch (option){
 			case 1:
@@ -36,6 +36,24 @@ int main(){
 						matrixB.addValue();
 						break;
 				}
+				break;
+			case 3:
+				std::cout<<"1.macierz A 2.macierz B\n";
+				std::cin>>option;
+				switch (option){
+					case 1:
+						matrixA.multiplyByInt();
+						break;
+					case 2:
+						matrixB.multiplyByInt();
+						break;
+				}
+				break;
+			case 4:
+				//multiply
+				break;
+			case 5:
+				//add
 				break;
 			case 0:
 				break;

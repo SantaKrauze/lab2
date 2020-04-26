@@ -3,15 +3,18 @@
 SparseMatrix::SparseMatrix(){
 	std::cout<<"Podaj ilość kolumn i wierszy\n";
 	std::cin>>_rows>>_columns;
-	std::cout<<"Inicjalizacja macierzy "<<_rows<<"x"<<_columns<<std::endl;
-	std::cout<<SparseMatrix::_valQuantity<<" niezerowych elementow\n";
+	//std::cout<<"Inicjalizacja macierzy "<<_rows<<"x"<<_columns<<std::endl;
+	//std::cout<<SparseMatrix::_valQuantity<<" niezerowych elementow\n";
 }
 
 void SparseMatrix::addValue(){
 	int row,col;
 	double val;
-	std::cout<<"\nDodawanie wartosci\n"<<"Podaj rzad i kolumne\n";
-	std::cin>>row>>col;
+	do{
+		std::cout<<"\nDodawanie wartosci\n"<<"Podaj rzad i kolumne\n";
+		std::cin>>row>>col;
+		if (_matrix[ {row, col} ]!=0) std::cout<<"Poprzednia wartosc w tej komorce (nadpisuje)\n";
+	}while (row>_rows||col>_columns);
 	std::cout<<"Podaj wartosc\n";
 	std::cin>>val;
 	_matrix[ {row, col} ]=val;
@@ -25,6 +28,18 @@ void SparseMatrix::addValue(int row, int col, double val){
 	std::cout<<row<<"x"<<col<<"="<<val<<std::endl;
 	_valQuantity++;
 	std::cout<<"Ilosc niezerowych elementow: "<<_valQuantity<<std::endl;
+}
+
+void SparseMatrix::multiplyByInt(){
+	//
+}
+
+void SparseMatrix::addMatrixes(){
+	//
+}
+
+void SparseMatrix::multiplyMatrixes(){
+	//
 }
 
 void SparseMatrix::printMatrix(){
