@@ -1,13 +1,13 @@
 #include "SparseMatrix.hpp"
 
-SparseMatrix::SparseMatrix(){
+SparseMatrix::SparseMatrix (){
 	std::cout<<"Podaj ilość kolumn i wierszy\n";
 	std::cin>>_rows>>_columns;
 	//std::cout<<"Inicjalizacja macierzy "<<_rows<<"x"<<_columns<<std::endl;
 	//std::cout<<SparseMatrix::_valQuantity<<" niezerowych elementow\n";
 }
 
-void SparseMatrix::addValue(){
+void SparseMatrix::addValue (){
 	int row,col;
 	double val;
 	do{
@@ -23,7 +23,7 @@ void SparseMatrix::addValue(){
 	std::cout<<"Ilosc niezerowych elementow: "<<_valQuantity<<std::endl;
 }
 
-void SparseMatrix::addValue(int row, int col, double val){
+void SparseMatrix::addValue (int row, int col, double val){
 	_matrix[ {row, col} ]=val;
 	std::cout<<row<<"x"<<col<<"="<<val<<std::endl;
 	_valQuantity++;
@@ -31,14 +31,19 @@ void SparseMatrix::addValue(int row, int col, double val){
 }
 
 void SparseMatrix::multiplyByInt(){
+	int k;
+	std::cout<<"Podaj skalar\n";
+	std::cin>>k;
+	for (auto i : _matrix) {
+		_matrix[i.first]*=k;
+	}
+}
+
+void SparseMatrix::addMatrixes (){
 	//
 }
 
-void SparseMatrix::addMatrixes(){
-	//
-}
-
-void SparseMatrix::multiplyMatrixes(){
+void SparseMatrix::multiplyMatrixes (){
 	//
 }
 
