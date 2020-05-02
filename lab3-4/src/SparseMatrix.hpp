@@ -8,11 +8,14 @@
 
 class SparseMatrix{	
 	public:
+		SparseMatrix operator+ (SparseMatrix& B){
+			return addMatrixes(B);
+		};
 		void addValue(int row, int col, double val);
 		void addValue();
 		void printMatrix();
 		void multiplyByInt();
-		void addMatrixes();
+		SparseMatrix addMatrixes(SparseMatrix& B);
 		void multiplyMatrixes();
 		void addInt();
 

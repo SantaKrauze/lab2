@@ -39,8 +39,10 @@ void SparseMatrix::multiplyByInt(){
 	}
 }
 
-void SparseMatrix::addMatrixes (){
+SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
+	SparseMatrix sum;
 	//
+	return SparseMatrix sum;
 }
 
 void SparseMatrix::multiplyMatrixes (){
