@@ -1,4 +1,4 @@
 $git status
 #ignoring .o files and final executable
 *.o
-lab2-d2
+lab3-d

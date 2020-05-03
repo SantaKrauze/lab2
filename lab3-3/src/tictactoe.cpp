@@ -2,9 +2,7 @@
 
 void TicTacToe::game (){
 	std::cout<<"Zaczynamy\n";
-	while (!gameOver()){
-		getMove();
-	}
+	while (!gameOver()) getMove();
 	std::cout<<"Koniec gry\n";
 	printBoard();
 }
