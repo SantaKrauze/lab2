@@ -1,9 +1,7 @@
-#include <iostream>
-#include <array>
 #include "src/tictactoe.hpp"
 
 int main (){
-	Board board;
+	TicTacToe board;
 	std::cout<<"START\n";
 	while (!board.gameOver()){
 		board.getMove();
