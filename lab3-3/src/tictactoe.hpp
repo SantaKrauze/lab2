@@ -6,9 +6,12 @@
 class TicTacToe{
 	public:
 		TicTacToe ();
+		void game ();
 		void getMove ();
 		bool gameOver ();
 	private:
+		/*void getMove ();
+		bool gameOver ();*/
 		bool isSpace ();
 		bool boundCheck (int row,int col);
 		void fill (int row, int col);
