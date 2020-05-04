@@ -7,8 +7,7 @@ class TicTacToe{
 	public:
 		TicTacToe ();
 		void pvpGame ();
-		//void getMove ();
-		//bool gameOver ();
+		void pvcGame();
 	private:
 		void getMove ();
 		bool gameOver ();
