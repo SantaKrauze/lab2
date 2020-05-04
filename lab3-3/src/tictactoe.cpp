@@ -8,6 +8,10 @@ void TicTacToe::pvpGame (){
 	printBoard();
 }
 
+void TicTacToe::pvcGame (){
+	//
+}
+
 void TicTacToe::getMove (){
 	int row,col;
 	printBoard();
@@ -32,20 +36,53 @@ bool TicTacToe::boundCheck (int row, int col){
 	else return false;
 }
 
+int TicTacToe::minimax (int index){
+	minimaxCalls++;
+
+	if (gameOver(1)) return -10;//if losing -10
+	else if (gameOver(0)) return 10;//if winning 10
+	else if (!isSpace()) return 0;//if draw 0
+
+	for (auto i : board){
+		for (auto j : i){
+			if (j == field::empty) minimax(1);
+		}
+	}
+	return 0;
+}
+
+bool TicTacToe::gameOver (int index){
+	if (!isSpace()) return true;
+	field player = players[index];
+	if (player==field::X) std::cout<<"X\n";
+	else std::cout<<"O\n";
+	int winCounter = 0;
+	for (auto i : possibleVictories){
+		for (auto j : i){
+			if (board[j[0]][j[1]]==player){
+				winCounter++;
+			}	
+		}
+		if (winCounter==3) return true;
+		winCounter = 0;
+	}
+	return false;
+}
+
 bool TicTacToe::gameOver (){
 	if (!isSpace()) return true;
 	field player = players[playerIndex];
 	if (player==field::X) std::cout<<"X\n";
 	else std::cout<<"O\n";
-	int vinCounter = 0;
+	int winCounter = 0;
 	for (auto i : possibleVictories){
 		for (auto j : i){
 			if (board[j[0]][j[1]]==player){
-				vinCounter++;
+				winCounter++;
 			}	
 		}
-		if (vinCounter==3) return true;
-		vinCounter = 0;
+		if (winCounter==3) return true;
+		winCounter = 0;
 	}
 	return false;
 }
@@ -78,8 +115,6 @@ void TicTacToe::printBoard (){
 TicTacToe::TicTacToe (){
 	playerIndex=0;
 	for (auto i : board){
-		for (auto j : i){
-			j=field::empty;
-		}
+		for (auto j : i) j = field::empty;
 	}
 }
