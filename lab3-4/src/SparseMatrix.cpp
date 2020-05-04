@@ -85,7 +85,7 @@ void SparseMatrix::multiplyByInt(){
 
 SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
 	if (this->_rows != B.rows() || this->_columns != B.columns()){
-		std::cout<<"rozne rozmiary\n";
+		std::cout<<"Rozne rozmiary macierzy (anuluje)\n";
 		return *this;
 	}
 	for (int i = 0; i < _rows; i++){
