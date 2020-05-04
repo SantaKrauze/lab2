@@ -1,8 +1,9 @@
 #include "tictactoe.hpp"
 
-void TicTacToe::game (){
+void TicTacToe::pvpGame (){
 	std::cout<<"Zaczynamy\n";
-	while (!gameOver()) getMove();
+	do getMove();
+	while (!gameOver());
 	std::cout<<"Koniec gry\n";
 	printBoard();
 }
@@ -10,8 +11,8 @@ void TicTacToe::game (){
 void TicTacToe::getMove (){
 	int row,col;
 	printBoard();
-	if (players[playerIndex]==field::X) std::cout<<"X, ";
-	else std::cout<<"O, ";
+	if (players[playerIndex]==field::X) std::cout<<"O, ";
+	else std::cout<<"X, ";
 	std::cout<<"rzad i kolumna\n";
 	std::cin>>row>>col;
 	while (!boundCheck(row-1, col-1)){
@@ -33,6 +34,19 @@ bool TicTacToe::boundCheck (int row, int col){
 
 bool TicTacToe::gameOver (){
 	if (!isSpace()) return true;
+	field player = players[playerIndex];
+	if (player==field::X) std::cout<<"X\n";
+	else std::cout<<"O\n";
+	int vinCounter = 0;
+	for (auto i : possibleVictories){
+		for (auto j : i){
+			if (board[j[0]][j[1]]==player){
+				vinCounter++;
+			}	
+		}
+		if (vinCounter==3) return true;
+		vinCounter = 0;
+	}
 	return false;
 }
 
