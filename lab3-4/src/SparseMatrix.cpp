@@ -71,7 +71,6 @@ void SparseMatrix::addValue (){
 	std::cout<<"Podaj wartosc\n";
 	std::cin>>val;
 	_matrix[ {row, col} ]=val;
-	std::cout<<row<<"x"<<col<<"="<<val<<std::endl;
 	_valQuantity++;
 }
 
