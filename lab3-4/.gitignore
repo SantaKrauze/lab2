@@ -1,4 +1,5 @@
 $git status
 #ignoring .o files and final executable
 *.o
+*.swp
 lab3-4

@@ -35,20 +35,26 @@ void SparseMatrix::multiplyByInt(){
 	std::cout<<"Podaj skalar\n";
 	std::cin>>k;
 	for (auto i : _matrix) {
-		_matrix[i.first]*=k;
+		_matrix[i.first] *= k;
 	}
 }
 
 SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
-	SparseMatrix C;
+	//SparseMatrix C;
 	if (this->_rows != B.rows() || this->_columns != B.columns()){
 		std::cout<<"rozne rozmiary\n";
 		return B;
 	}
 	else{
-		//
+		/*for (int i = 0; i < _rows; i++){
+			for (int j = 0; j < _columns; j++){
+				if (_matrix[ {i, j} ] != 0 || B[ {i, j} ] != 0){
+					_matrix[ {i, j} ] = _matrix[ {i, j} ] + B[ {i, j} ];
+				}
+			}
+		}*/
 	}
-	return C;
+	return *this;
 }
 
 SparseMatrix SparseMatrix::multiplyMatrixes (SparseMatrix& B){

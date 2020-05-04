@@ -10,7 +10,7 @@ int main(){
 	SparseMatrix matrixB;
 	int option=1;
 	while(option!=0){
-		std::cout<<"\n1.pokaz macierz \t 2.dodaj wartosc \t 3.pomnoz przez skalar \t 4.dodawanie macierzy \t 5. mnozenie macierzy \t 0.zakoncz\n";
+		std::cout<<"\n1.drukuj \t 2.dodaj wartosc \t 3.M * k \t 4.Ma + Mb \t 5. Ma * Mb \t 0.zakoncz\n";
 		std::cin>>option;
 		switch (option){
 			case 1:
