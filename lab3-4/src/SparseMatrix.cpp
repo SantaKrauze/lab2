@@ -43,17 +43,12 @@ void SparseMatrix::actionSwitch (SparseMatrix& B){
 						break;
 				}
 				break;
-			case 4:{
+			case 4:
 				*this = *this + B;
-				//matrixC.printMatrix();
 				break;
-			       }
-
-			case 5:{
-				SparseMatrix matrixD = *this * B;
+			case 5:
+				*this = *this * B;
 				break;
-				}
-
 			case 0:
 				break;
 		}
@@ -92,15 +87,15 @@ void SparseMatrix::multiplyByInt(){
 SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
 	if (this->_rows != B.rows() || this->_columns != B.columns()){
 		std::cout<<"rozne rozmiary\n";
-		return B;
+		return *this;
 	}
-	else{
-		for (int i = 0; i < _rows; i++){
-			for (int j = 0; j < _columns; j++){
-				if (_matrix[ {i, j} ] != 0 || B.getValue(i, j) != 0){
-					_matrix[ {i, j} ] += B.getValue(i, j);
-				}
-			}
+	for (int i = 0; i < _rows; i++){
+		for (int j = 0; j < _columns; j++){
+			//std::cout<<i<<j<<" "<<_matrix[{i,j}]<<"-"<<B.getValue(i,j)<<std::endl;
+			if (_matrix[ {i, j} ] != 0 || B.getValue(i, j) != 0){
+				_matrix[ {i, j} ] += B.getValue(i, j);
+				//std::cout<<i<<j<<" added\n";
+			}	
 		}
 	}
 	return *this;
