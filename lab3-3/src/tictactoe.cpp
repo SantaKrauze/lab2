@@ -1,8 +1,9 @@
 #include "tictactoe.hpp"
 
-void TicTacToe::game (){
+void TicTacToe::pvpGame (){
 	std::cout<<"Zaczynamy\n";
-	while (!gameOver()) getMove();
+	do getMove();
+	while (!gameOver());
 	std::cout<<"Koniec gry\n";
 	printBoard();
 }
@@ -33,6 +34,9 @@ bool TicTacToe::boundCheck (int row, int col){
 
 bool TicTacToe::gameOver (){
 	if (!isSpace()) return true;
+	for (auto i : possibleVictories){
+		
+	}
 	return false;
 }
 
