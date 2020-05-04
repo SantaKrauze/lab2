@@ -17,14 +17,6 @@ void SparseMatrix::actionSwitch (SparseMatrix& B){
 					case 2:
 						B.printMatrix();
 						break;
-					/*
-					case 3:
-						C.printMatrix();
-						break;
-					case 4:
-						D.printMatrix();
-						break;
-					*/
 				}
 				break;
 			case 2:
@@ -52,8 +44,8 @@ void SparseMatrix::actionSwitch (SparseMatrix& B){
 				}
 				break;
 			case 4:{
-				SparseMatrix matrixC = *this + B;
-				matrixC.printMatrix();
+				*this = *this + B;
+				//matrixC.printMatrix();
 				break;
 			       }
 
