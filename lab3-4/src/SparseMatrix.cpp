@@ -17,6 +17,14 @@ void SparseMatrix::actionSwitch (SparseMatrix& B){
 					case 2:
 						B.printMatrix();
 						break;
+					/*
+					case 3:
+						C.printMatrix();
+						break;
+					case 4:
+						D.printMatrix();
+						break;
+					*/
 				}
 				break;
 			case 2:
@@ -43,12 +51,17 @@ void SparseMatrix::actionSwitch (SparseMatrix& B){
 						break;
 				}
 				break;
-			case 4:
-				//
+			case 4:{
+				SparseMatrix matrixC = *this + B;
+				matrixC.printMatrix();
 				break;
-			case 5:
-				//
+			       }
+
+			case 5:{
+				SparseMatrix matrixD = *this * B;
 				break;
+				}
+
 			case 0:
 				break;
 		}
@@ -57,9 +70,7 @@ void SparseMatrix::actionSwitch (SparseMatrix& B){
 
 SparseMatrix::SparseMatrix (){
 	std::cout<<"Podaj ilość kolumn i wierszy\n";
-	std::cin>>_rows>>_columns;
-	//std::cout<<"Inicjalizacja macierzy "<<_rows<<"x"<<_columns<<std::endl;
-	//std::cout<<SparseMatrix::_valQuantity<<" niezerowych elementow\n";
+	std::cin>>_rows>>_columns;	
 }
 
 void SparseMatrix::addValue (){
@@ -75,14 +86,6 @@ void SparseMatrix::addValue (){
 	_matrix[ {row, col} ]=val;
 	std::cout<<row<<"x"<<col<<"="<<val<<std::endl;
 	_valQuantity++;
-	std::cout<<"Ilosc niezerowych elementow: "<<_valQuantity<<std::endl;
-}
-
-void SparseMatrix::addValue (int row, int col, double val){
-	_matrix[ {row, col} ]=val;
-	std::cout<<row<<"x"<<col<<"="<<val<<std::endl;
-	_valQuantity++;
-	std::cout<<"Ilosc niezerowych elementow: "<<_valQuantity<<std::endl;
 }
 
 void SparseMatrix::multiplyByInt(){
@@ -95,19 +98,18 @@ void SparseMatrix::multiplyByInt(){
 }
 
 SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
-	//SparseMatrix C;
 	if (this->_rows != B.rows() || this->_columns != B.columns()){
 		std::cout<<"rozne rozmiary\n";
 		return B;
 	}
 	else{
-		/*for (int i = 0; i < _rows; i++){
+		for (int i = 0; i < _rows; i++){
 			for (int j = 0; j < _columns; j++){
-				if (_matrix[ {i, j} ] != 0 || B[ {i, j} ] != 0){
-					_matrix[ {i, j} ] = _matrix[ {i, j} ] + B[ {i, j} ];
+				if (_matrix[ {i, j} ] != 0 || B.getValue(i, j) != 0){
+					_matrix[ {i, j} ] += B.getValue(i, j);
 				}
 			}
-		}*/
+		}
 	}
 	return *this;
 }

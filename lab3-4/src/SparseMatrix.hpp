@@ -8,7 +8,13 @@
 
 class SparseMatrix{	
 	public:
+		int getValue (int row, int col){
+			return _matrix[ {row, col} ];
+		}
 		void actionSwitch (SparseMatrix& B);
+		SparseMatrix();
+
+	private:
 		SparseMatrix operator+ (SparseMatrix& B){
 			return addMatrixes(B);
 		};
@@ -28,9 +34,6 @@ class SparseMatrix{
 		SparseMatrix addMatrixes(SparseMatrix& B);
 		SparseMatrix multiplyMatrixes(SparseMatrix& B);
 		void addInt();
-
-		SparseMatrix();
-	private:
 		using DOK = std::map< std::array<int,2>, double >;
 		DOK _matrix;
 		int _rows,_columns;
