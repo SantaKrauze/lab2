@@ -1,5 +1,60 @@
 #include "SparseMatrix.hpp"
 
+void SparseMatrix::actionSwitch (SparseMatrix& B){
+	std::cout<<"Powstały 2 macierze\n";
+	int option = 1;
+	while (option != 0){
+		std::cout<<"1.Drukuj \t 2.Dodaj wartosc \t 3. k * M \n 4. Ma + Mb \t 5. Ma * Mb \t 0.Zakoncz \n";
+		std::cin>>option;
+		switch (option){
+			case 1:
+				std::cout<<"1.Macierz A \t 2.Macierz B \n";
+				std::cin>>option;
+				switch (option){
+					case 1:
+						this->printMatrix();
+						break;
+					case 2:
+						B.printMatrix();
+						break;
+				}
+				break;
+			case 2:
+				std::cout<<"1.Macierz A \t 2.Macierz B \n";
+				std::cin>>option;
+				switch (option){
+					case 1:
+						this->addValue();
+						break;
+					case 2:
+						B.addValue();
+						break;
+				}
+				break;
+			case 3:
+				std::cout<<"1.Macierz A \t 2.Macierz B \n";
+				std::cin>>option;
+				switch (option){
+					case 1:
+						this->multiplyByInt();
+						break;
+					case 2:
+						B.multiplyByInt();
+						break;
+				}
+				break;
+			case 4:
+				//
+				break;
+			case 5:
+				//
+				break;
+			case 0:
+				break;
+		}
+	}
+}
+
 SparseMatrix::SparseMatrix (){
 	std::cout<<"Podaj ilość kolumn i wierszy\n";
 	std::cin>>_rows>>_columns;

@@ -8,6 +8,7 @@
 
 class SparseMatrix{	
 	public:
+		void actionSwitch (SparseMatrix& B);
 		SparseMatrix operator+ (SparseMatrix& B){
 			return addMatrixes(B);
 		};
