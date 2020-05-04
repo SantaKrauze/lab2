@@ -10,7 +10,7 @@ int main(){
 	SparseMatrix matrixB;
 	int option=1;
 	while(option!=0){
-		std::cout<<"\n1.pokaz macierz \t 2.dodaj wartosc \t 3.pomnoz przez skalar \t 4.mnozenie macierzy \t 5. dodawanie macierzy \t 0.zakoncz\n";
+		std::cout<<"\n1.pokaz macierz \t 2.dodaj wartosc \t 3.pomnoz przez skalar \t 4.dodawanie macierzy \t 5. mnozenie macierzy \t 0.zakoncz\n";
 		std::cin>>option;
 		switch (option){
 			case 1:
@@ -50,10 +50,10 @@ int main(){
 				}
 				break;
 			case 4:
-				//multiply
+				//SparseMatrix matrixC = matrixA + matrixB;
 				break;
 			case 5:
-				//add
+				//SparseMatrix matrixD = matrixA * matrixB;
 				break;
 			case 0:
 				break;

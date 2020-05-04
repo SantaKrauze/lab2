@@ -40,13 +40,21 @@ void SparseMatrix::multiplyByInt(){
 }
 
 SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
-	SparseMatrix sum;
-	//
-	return SparseMatrix sum;
+	SparseMatrix C;
+	if (this->_rows != B.rows() || this->_columns != B.columns()){
+		std::cout<<"rozne rozmiary\n";
+		return B;
+	}
+	else{
+		//
+	}
+	return C;
 }
 
-void SparseMatrix::multiplyMatrixes (){
+SparseMatrix SparseMatrix::multiplyMatrixes (SparseMatrix& B){
+	SparseMatrix C;
 	//
+	return C;
 }
 
 void SparseMatrix::printMatrix(){

@@ -11,12 +11,21 @@ class SparseMatrix{
 		SparseMatrix operator+ (SparseMatrix& B){
 			return addMatrixes(B);
 		};
+		SparseMatrix operator* (SparseMatrix& B){
+			return multiplyMatrixes(B);
+		};
+		int rows(){
+			return _rows;
+		}
+		int columns(){
+			return _columns;
+		}
 		void addValue(int row, int col, double val);
 		void addValue();
 		void printMatrix();
 		void multiplyByInt();
 		SparseMatrix addMatrixes(SparseMatrix& B);
-		void multiplyMatrixes();
+		SparseMatrix multiplyMatrixes(SparseMatrix& B);
 		void addInt();
 
 		SparseMatrix();
