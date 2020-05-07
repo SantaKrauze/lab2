@@ -55,6 +55,18 @@ void SparseMatrix::actionSwitch (SparseMatrix& B){
 	}
 }
 
+void SparseMatrix::addValue (int row, int col, double val){
+	if (row>_rows || col>_columns) return;
+	_matrix[ {row, col} ]=val;
+}
+
+SparseMatrix::SparseMatrix (int row, int col){
+	_rows=row;
+	_columns=col;
+	std::cout<<"Macierz "<<row<<"x"<<col<<std::endl;
+	//printMatrix();
+}
+
 SparseMatrix::SparseMatrix (){
 	std::cout<<"Podaj ilość kolumn i wierszy\n";
 	std::cin>>_rows>>_columns;	
@@ -88,8 +100,8 @@ SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
 		std::cout<<"Rozne rozmiary macierzy (anuluje)\n";
 		return *this;
 	}
-	for (int i = 0; i < _rows; i++){
-		for (int j = 0; j < _columns; j++){
+	for (int i = 1; i <= _rows; i++){
+		for (int j = 1; j <= _columns; j++){
 			//std::cout<<i<<j<<" "<<_matrix[{i,j}]<<"-"<<B.getValue(i,j)<<std::endl;
 			if (_matrix[ {i, j} ] != 0 || B.getValue(i, j) != 0){
 				_matrix[ {i, j} ] += B.getValue(i, j);
@@ -101,9 +113,12 @@ SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
 }
 
 SparseMatrix SparseMatrix::multiplyMatrixes (SparseMatrix& B){
-	SparseMatrix C;
-	//
-	return C;
+	if (this->_rows != B.rows()){
+		std::cout<<"Nieodpowiednie rozmiary macierzy (anuluje)\n";
+		return *this;
+	}
+	
+	return *this;
 }
 
 void SparseMatrix::printMatrix(){
