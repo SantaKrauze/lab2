@@ -105,7 +105,6 @@ SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
 			//std::cout<<i<<j<<" "<<_matrix[{i,j}]<<"-"<<B.getValue(i,j)<<std::endl;
 			if (_matrix[ {i, j} ] != 0 || B.getValue(i, j) != 0){
 				_matrix[ {i, j} ] += B.getValue(i, j);
-				//std::cout<<i<<j<<" added\n";
 			}	
 		}
 	}

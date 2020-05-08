@@ -22,7 +22,7 @@ class SparseMatrix{
 		SparseMatrix operator* (SparseMatrix& B){
 			return multiplyMatrixes(B);
 		}
-		int getValue (int row, int col){
+		double getValue (int row, int col){
 			return _matrix[ {row, col} ];
 		}
 		int rows(){
