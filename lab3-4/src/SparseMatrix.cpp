@@ -37,14 +37,18 @@ SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
 	return *this;
 }
 
-void SparseMatrix::addInt(int n){
-	std::cout<<"\n\nDodawanie liczby do macierzy (tylko dla diagonalnych)\n";
+bool SparseMatrix::checkDiagonal(){
 	for (auto i : _matrix){
 		if (i.first.at(0) != i.first.at(1) && _matrix.at(i.first) != 0){
 			std::cout<<"Macierz nie jest diagonalna\n";
-			return;
+			return false;
 		}
 	}
+	return true;
+}
+
+void SparseMatrix::addInt(int n){
+	std::cout<<"\n\nDodawanie liczby do macierzy (tylko dla diagonalnych)\n";	
 	//
 }
 

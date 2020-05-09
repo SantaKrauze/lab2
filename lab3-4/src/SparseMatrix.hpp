@@ -32,7 +32,8 @@ class SparseMatrix{
 		}
 		int columns(){
 			return _columns;
-		}	
+		}
+		bool checkDiagonal();	
 		SparseMatrix addMatrixes(SparseMatrix& B);
 		SparseMatrix multiplyMatrixes(SparseMatrix& B);
 		std::map< std::array<int,2>, double > _matrix;
