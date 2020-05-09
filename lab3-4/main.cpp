@@ -14,6 +14,7 @@ int main(){
 	matrixB.printMatrix();
 	matrixA = matrixA + matrixB;
 	matrixA.printMatrix();
+	matrixB.addInt(5);
 	//matrixA.actionSwitch(matrixB);	
 	return 0;
 }

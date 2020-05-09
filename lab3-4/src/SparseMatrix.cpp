@@ -22,7 +22,7 @@ void SparseMatrix::multiplyByInt(){
 }
 
 SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
-	std::cout<<"Dodawanie macierzy\n";
+	std::cout<<"\n\nDodawanie macierzy\n";
 	if (this->_rows != B.rows() || this->_columns != B.columns()){
 		std::cout<<"Rozne rozmiary macierzy (anuluje)\n";
 		return *this;
@@ -38,9 +38,14 @@ SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
 }
 
 void SparseMatrix::addInt(int n){
+	std::cout<<"\n\nDodawanie liczby do macierzy (tylko dla diagonalnych)\n";
 	for (auto i : _matrix){
-		//
+		if (i.first.at(0) != i.first.at(1) && _matrix.at(i.first) != 0){
+			std::cout<<"Macierz nie jest diagonalna\n";
+			return;
+		}
 	}
+	//
 }
 
 SparseMatrix SparseMatrix::multiplyMatrixes (SparseMatrix& B){
