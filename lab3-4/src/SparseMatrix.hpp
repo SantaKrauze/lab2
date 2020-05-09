@@ -8,20 +8,22 @@
 
 class SparseMatrix{	
 	public:	
-		void actionSwitch (SparseMatrix& B);
+		SparseMatrix(int row, int col);	
 		SparseMatrix();
+		void addValue();	
+		void multiplyByInt();
 		void printMatrix();
-		SparseMatrix(int row, int col);
-		void addValue(int row, int col, double val);
-		std::map< std::array<int,2>, double > _matrix;
-
-	//private:
+		void actionSwitch (SparseMatrix& B);
+		void addValue(int row, int col, double val);	
+		void addInt(int n);
 		SparseMatrix operator+ (SparseMatrix& B){
 			return addMatrixes(B);
 		}
 		SparseMatrix operator* (SparseMatrix& B){
 			return multiplyMatrixes(B);
 		}
+	private:
+		
 		double getValue (int row, int col){
 			return _matrix[ {row, col} ];
 		}
@@ -30,16 +32,11 @@ class SparseMatrix{
 		}
 		int columns(){
 			return _columns;
-		}
-		void addValue();	
-		void multiplyByInt();
+		}	
 		SparseMatrix addMatrixes(SparseMatrix& B);
 		SparseMatrix multiplyMatrixes(SparseMatrix& B);
-		void addInt();
-		//std::map< std::array<int,2>, double > _matrix;
+		std::map< std::array<int,2>, double > _matrix;
 		int _rows,_columns;
-		int _valQuantity = 0;
-		double _getValue(int row, int col);
 			
 };
 #endif
