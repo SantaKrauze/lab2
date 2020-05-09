@@ -64,7 +64,7 @@ SparseMatrix SparseMatrix::multiplyMatrixes (SparseMatrix& B){
 		std::cout<<"Nieodpowiednie rozmiary macierzy (anuluje)\n";
 		return *this;
 	}
-	
+	//
 	printMatrix();
 	return *this;
 }
