@@ -9,11 +9,13 @@ int main(){
 	matrixB.addValue(1,1,11);
 	matrixB.addValue(3,3,56.3);
 	matrixB.addValue(4,4,3.67);
-	matrixB.addValue(3,2,33.3);
+	//matrixB.addValue(3,2,33.3);
 	matrixA.printMatrix();
 	matrixB.printMatrix();
 	matrixA = matrixA + matrixB;
-	matrixA.printMatrix();
+	//matrixA.printMatrix();
+	matrixB.multiplyByInt();
+	//matrixB.printMatrix();
 	matrixB.addInt(5);
 	//matrixA.actionSwitch(matrixB);	
 	return 0;

@@ -9,16 +9,16 @@ SparseMatrix::SparseMatrix (int row, int col){
 	_rows=row;
 	_columns=col;
 	std::cout<<"Macierz "<<row<<"x"<<col<<std::endl;
-	//printMatrix();
 }
 
 void SparseMatrix::multiplyByInt(){
 	int k;
-	std::cout<<"Podaj skalar\n";
+	std::cout<<"\n\nMnozenie przez skalar\nPodaj skalar\n";
 	std::cin>>k;
 	for (auto i : _matrix) {
-		_matrix[i.first] *= k;
+		_matrix.at(i.first) *= k;
 	}
+	printMatrix();
 }
 
 SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
@@ -34,6 +34,7 @@ SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
 			}	
 		}
 	}
+	printMatrix();
 	return *this;
 }
 
@@ -49,7 +50,13 @@ bool SparseMatrix::checkDiagonal(){
 
 void SparseMatrix::addInt(int n){
 	std::cout<<"\n\nDodawanie liczby do macierzy (tylko dla diagonalnych)\n";	
-	//
+	if (!checkDiagonal()) return;
+	for (auto i : _matrix){
+		if (i.first.at(0) == i.first.at(1)){
+			_matrix.at(i.first) += n;
+		}
+	}
+	printMatrix();
 }
 
 SparseMatrix SparseMatrix::multiplyMatrixes (SparseMatrix& B){
@@ -58,6 +65,7 @@ SparseMatrix SparseMatrix::multiplyMatrixes (SparseMatrix& B){
 		return *this;
 	}
 	
+	printMatrix();
 	return *this;
 }
 
