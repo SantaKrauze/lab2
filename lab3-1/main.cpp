@@ -2,6 +2,6 @@
 
 int main(){
 	String string;
-	string.match(string.string, string.pattern);
+	string.match();
 	return 0;
 }

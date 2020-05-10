@@ -2,12 +2,12 @@
 
 String::String(){
 	std::cout<<"Podaj napis:\n";
-	std::cin>>string;
+	//std::cin>>string;
 	std::cout<<"Podaj wzorzec:\n";
-	std::cin>>pattern
+	//std::cin>>pattern;
 }
 
-bool String::match(string& pattern,string& string){
+bool String::match(){
 	
 	return true;//true if ok
 }
