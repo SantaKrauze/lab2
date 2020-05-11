@@ -11,8 +11,8 @@ class TicTacToe{
 	private:
 		void getMove ();
 		bool gameOver ();
-		bool gameOver (int index);
-		int minimax (int index);
+		bool pvcOver (int index);
+		int minimax (int index, int row, int col, int calls);
 		bool isSpace ();
 		bool boundCheck (int row,int col);
 		void fill (int row, int col);
@@ -22,6 +22,7 @@ class TicTacToe{
 		std::array <field,2> players = {field::O, field::X};
 		using Board = std::array < std::array<field,3>, 3>;
 		Board board;
+		Board minimaxBoard;
 		using pair = std::array <int,2>;
 		using victory = std::array <pair, 3>;
 		victory v1 = {{ {{2,0}}, {{1,1}}, {{0,2}} }};
