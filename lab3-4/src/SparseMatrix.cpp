@@ -1,8 +1,8 @@
 #include "SparseMatrix.hpp"
 
 void SparseMatrix::addValue (int row, int col, double val){
-	if (row>_rows || col>_columns) return;
-	_matrix[ {row, col} ]=val;
+	if (row > _rows || col > _columns) return;
+	_matrix[ {row, col} ] = val;
 }
 
 SparseMatrix::SparseMatrix (int row, int col){
@@ -11,10 +11,8 @@ SparseMatrix::SparseMatrix (int row, int col){
 	std::cout<<"Macierz "<<row<<"x"<<col<<std::endl;
 }
 
-void SparseMatrix::multiplyByInt(){
-	int k;
-	std::cout<<"\n\nMnozenie przez skalar\nPodaj skalar\n";
-	std::cin>>k;
+void SparseMatrix::multiplyByInt(int k){
+	std::cout<<"\n\nMnozenie przez skalar: "<<k<<std::endl;
 	for (auto i : _matrix) {
 		_matrix.at(i.first) *= k;
 	}
@@ -31,7 +29,7 @@ SparseMatrix SparseMatrix::addMatrixes (SparseMatrix& B){
 		for (int j = 1; j <= _columns; j++){
 			if (_matrix[ {i, j} ] != 0 || B.getValue(i, j) != 0){
 				_matrix[ {i, j} ] += B.getValue(i, j);
-			}	
+			}
 		}
 	}
 	printMatrix();
@@ -49,7 +47,7 @@ bool SparseMatrix::checkDiagonal(){
 }
 
 void SparseMatrix::addInt(int n){
-	std::cout<<"\n\nDodawanie liczby do macierzy (tylko dla diagonalnych)\n";	
+	std::cout<<"\n\nDodawanie liczby do macierzy (tylko dla diagonalnych): "<<n<<std::endl;	
 	if (!checkDiagonal()) return;
 	for (auto i : _matrix){
 		if (i.first.at(0) == i.first.at(1)){
@@ -60,13 +58,23 @@ void SparseMatrix::addInt(int n){
 }
 
 SparseMatrix SparseMatrix::multiplyMatrixes (SparseMatrix& B){
-	if (this->_rows != B.rows()){
+	std::cout<<"\n\nMnozenie macierzy\n";
+	if (this->_rows != B.columns()){
 		std::cout<<"Nieodpowiednie rozmiary macierzy (anuluje)\n";
 		return *this;
 	}
-	//
-	printMatrix();
-	return *this;
+	double val;
+	SparseMatrix C(this -> _rows, B.columns());	
+	for (int i = 1; i <= this -> _rows; i++){
+		for (int j = 1; j <= B.columns(); j++){
+			for (int k = 1; k <= this -> _columns; k++){
+				val = C.getValue(i ,j) + _matrix[ {i, k} ] * B.getValue(k, j); //C[i][j] += A[i][k] * B[k][j]
+				C.setValue(i, j, val);
+			}
+		}
+	}
+	C.printMatrix();
+	return C;
 }
 
 void SparseMatrix::printMatrix(){
@@ -81,7 +89,7 @@ void SparseMatrix::printMatrix(){
 		std::cout<<std::endl;
 	}
 }
-
+/*
 SparseMatrix::SparseMatrix (){
 	std::cout<<"Podaj ilość kolumn i wierszy\n";
 	std::cin>>_rows>>_columns;	
@@ -153,4 +161,4 @@ void SparseMatrix::actionSwitch (SparseMatrix& B){
 				break;
 		}
 	}
-}
+}*/

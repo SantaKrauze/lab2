@@ -13,10 +13,9 @@ int main(){
 	matrixA.printMatrix();
 	matrixB.printMatrix();
 	matrixA = matrixA + matrixB;
-	//matrixA.printMatrix();
-	matrixB.multiplyByInt();
-	//matrixB.printMatrix();
+	matrixB.multiplyByInt(3);
 	matrixB.addInt(5);
+	SparseMatrix matrixC = matrixA * matrixB;
 	//matrixA.actionSwitch(matrixB);	
 	return 0;
 }

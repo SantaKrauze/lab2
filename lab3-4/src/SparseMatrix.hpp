@@ -9,11 +9,11 @@
 class SparseMatrix{	
 	public:	
 		SparseMatrix(int row, int col);	
-		SparseMatrix();
-		void addValue();	
-		void multiplyByInt();
+		//SparseMatrix();
+		//void addValue();	
+		void multiplyByInt(int k);
 		void printMatrix();
-		void actionSwitch (SparseMatrix& B);
+		//void actionSwitch (SparseMatrix& B);
 		void addValue(int row, int col, double val);	
 		void addInt(int n);
 		SparseMatrix operator+ (SparseMatrix& B){
@@ -23,7 +23,9 @@ class SparseMatrix{
 			return multiplyMatrixes(B);
 		}
 	private:
-		
+		void setValue (int row, int col, double val){
+			_matrix[ {row, col} ] = val;
+		}	
 		double getValue (int row, int col){
 			return _matrix[ {row, col} ];
 		}
