@@ -10,6 +10,7 @@ class TicTacToe{
 		void pvcGame();
 	private:
 		void getMove ();
+		void aiMove();
 		bool gameOver ();
 		bool pvcOver (int index);
 		int minimax (int index, int row, int col, int calls);

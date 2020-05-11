@@ -34,8 +34,21 @@ bool TicTacToe::boundCheck (int row, int col){
 
 void TicTacToe::pvcGame (){
 	std::cout<<"Powodzenia\n";
-	do getMove();
-	while ()	
+	do {
+		if (playerIndex==0) getMove();
+		else{
+			aiMove();
+		}
+	}
+	while (!gameOver());
+}
+
+void TicTacToe::aiMove(){
+	using boardTemplate = std::array< std::array<field, 3>, 3>;
+	boardTemplate newBoard;
+	std::array<int, 9> scores;
+	int bestMove = minimax(1);
+	std::cout<<"\nAI robi cos\n";
 }
 
 int TicTacToe::minimax (int index, int row, int col, int calls){
@@ -62,7 +75,7 @@ bool TicTacToe::pvcOver (int index){
 		for (auto j : i){
 			if (board[j[0]][j[1]]==player){
 				winCounter++;
-			}	
+			}
 		}
 		if (winCounter==3) return true;
 		winCounter = 0;
