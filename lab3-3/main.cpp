@@ -2,7 +2,7 @@
 
 int main (){
 	TicTacToe board;
-	//board.pvpGame();
-	board.pvcGame();
+	board.pvpGame();
+	//board.pvcGame();
 	return 0;
 }

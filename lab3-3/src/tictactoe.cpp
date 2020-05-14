@@ -31,7 +31,7 @@ bool TicTacToe::boundCheck (int row, int col){
 	if (row>=0&&row<=2&&col>=0&&col<=2) return true;
 	else return false;
 }
-
+/*
 void TicTacToe::pvcGame (){
 	std::cout<<"Powodzenia\n";
 	do {
@@ -64,7 +64,7 @@ int TicTacToe::minimax (int index, int row, int col, int calls){
 		}
 	}
 	return 0;
-}
+}*/
 
 bool TicTacToe::pvcOver (int index){
 	field player = players[index];
