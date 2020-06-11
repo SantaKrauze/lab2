@@ -19,16 +19,15 @@ std::string PhoneBook::getData(std::string key){
 }
 
 void PhoneBook::setData(std::string key, std::string data){
-	bool exists = 0;
+	//bool exists = 0;
 	std::string line;
 	while (std::getline(inBook, line)){
 		if (line.compare(key) == 0){//if line = key;
-			exists = 1;
+			//exists = 1;
 			return;
 		}
 	}
 	outBook<<key<<'\n'<<data<<'\n';
-	// if key exists, just change data
 	std::cout<<"Adding: "<<key<<": "<<data<<'\n';
 }
 
