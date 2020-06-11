@@ -2,7 +2,7 @@
 
 int main () {
 	PhoneBook book;
-	book.setData("adam", "adam@email.com");
+	//book.setData("adam", "adam@email.com");
 	book.printFile();
 	return 0;
 }

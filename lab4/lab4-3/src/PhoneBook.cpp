@@ -2,39 +2,33 @@
 
 
 PhoneBook::PhoneBook(){	
-	outBook.open(filePath, std::ios_base::app);
+	//std::cout<<"Mapping\n";
 	inBook.open(filePath);
-	std::cout<<"Opening\n";
+	std::string key;
+	std::string data;
+	while (std::getline(inBook, key)){
+		std::getline(inBook,data);
+		//std::cout<<key<<std::endl<<data<<std::endl;
+		phonebook [key] = data;
+	}
+	inBook.close();
 }
 
 PhoneBook::~PhoneBook(){
-	outBook.close();
-	inBook.close();
-	std::cout<<"Closing\n";
-}
-
-std::string PhoneBook::getData(std::string key){
-	std::string data;
-	return data;
+	//
 }
 
 void PhoneBook::setData(std::string key, std::string data){
-	//bool exists = 0;
-	std::string line;
-	while (std::getline(inBook, line)){
-		if (line.compare(key) == 0){//if line = key;
-			//exists = 1;
-			return;
-		}
-	}
-	outBook<<key<<'\n'<<data<<'\n';
-	std::cout<<"Adding: "<<key<<": "<<data<<'\n';
+	phonebook[key] = data;
 }
 
 void PhoneBook::printFile(){
-	std::string line;
-	std::cout<<"\nPrinting the phone book...";
-	while (std::getline(inBook, line)){
-		std::cout<<line<<'\n';
+	std::cout<<"\nPrinting the phone book...\n";
+	int j = 0;
+	for (auto i : phonebook){
+		j++;
+		std::cout<<j<<": ";
+		std::cout<<i.first<<"-"<<phonebook.at(i.first)<<'\n';
 	}
+	std::cout<<'\n';
 }
