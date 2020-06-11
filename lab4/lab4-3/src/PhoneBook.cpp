@@ -15,11 +15,15 @@ PhoneBook::PhoneBook(){
 }
 
 PhoneBook::~PhoneBook(){
-	//
+	outBook.open(filePath);
+	for (auto i : phonebook){
+		outBook<<i.first<<'\n'<<phonebook.at(i.first)<<'\n';
+	}
+	outBook.close();
 }
 
 void PhoneBook::setData(std::string key, std::string data){
-	phonebook[key] = data;
+	phonebook.at(key) = data;
 }
 
 void PhoneBook::printFile(){
@@ -28,7 +32,7 @@ void PhoneBook::printFile(){
 	for (auto i : phonebook){
 		j++;
 		std::cout<<j<<": ";
-		std::cout<<i.first<<"-"<<phonebook.at(i.first)<<'\n';
+		std::cout<<i.first<<"---"<<phonebook.at(i.first)<<'\n';
 	}
 	std::cout<<'\n';
 }
