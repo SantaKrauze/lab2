@@ -1,5 +1,5 @@
-lab3-4: main.o src/SparseMatrix.o
-	g++ main.o src/SparseMatrix.o -o lab3-4
+lab4-3: main.o src/PhoneBook.o
+	g++ main.o src/PhoneBook.o -o lab4-3
 
-main.o: main.cpp src/SparseMatrix.hpp
+main.o: main.cpp src/PhoneBook.hpp
 	g++ -c main.cpp
