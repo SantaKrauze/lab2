@@ -1,5 +1,5 @@
-lab3-4: main.o src/complex0.o
-	g++ main.o src/complex0.o -o lab3-4
+lab4-1: main.o src/Complex0.o
+	g++ main.o src/Complex0.o -o lab4-1
 
 main.o: main.cpp src/Complex0.hpp
 	g++ -c main.cpp
