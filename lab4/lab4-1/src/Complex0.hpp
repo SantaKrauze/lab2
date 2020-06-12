@@ -5,6 +5,7 @@
 
 class Complex0{
 	public:
+		Complex0();
 		Complex0(float r, float i);
 		Complex0 operator+ (Complex0& Z){
 			return addComplex(Z);
