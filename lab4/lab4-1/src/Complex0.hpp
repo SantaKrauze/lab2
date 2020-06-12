@@ -28,9 +28,9 @@ class Complex0{
 		float getIm(){
 			return compNum.at(1);
 		}
-		Complex0 conjugate (Complex0& Z);
+		Complex0 conjugate ();
 		friend std::ostream& operator<< (std::ostream& out, Complex0& Z){
-			return out<<Z.getRe()<<" + i*"<<Z.getIm();
+			return out<<Z.getRe()<<" + "<<Z.getIm()<<"*i";
 		}
 	private:
 		Complex0 subComplex (Complex0& Z);

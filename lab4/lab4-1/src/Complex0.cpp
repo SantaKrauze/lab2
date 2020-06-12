@@ -26,15 +26,21 @@ Complex0 Complex0::addComplex (float R){
 
 Complex0 Complex0::multiplyComplex (Complex0& Z){
 	Complex0 Z2;
+	Z2.setRe (this->getRe()*Z.getRe() - this->getIm()*Z.getIm());
+	Z2.setIm (this->getRe()*Z.getIm() + Z.getRe()*this->getIm());
 	return Z2;
 }
 
 Complex0 Complex0::multiplyComplex (float R){
 	Complex0 Z2;
+	Z2.setRe (this->getRe()*R);
+	Z2.setIm (this->getIm()*R);
 	return Z2;
 }
 
-Complex0 Complex0::conjugate (Complex0& Z){
-	Complex0 Z2;
-	return Z2;
+Complex0 Complex0::conjugate (){
+	Complex0 Z;
+	Z.setRe (this->getRe());
+	Z.setIm (-this->getIm());
+	return Z;
 }
