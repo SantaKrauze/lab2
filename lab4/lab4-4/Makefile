@@ -1,5 +1,5 @@
-lab3-4: main.o src/SparseMatrix.o
-	g++ main.o src/SparseMatrix.o -o lab3-4
+lab4-4: main.o src/Database.o
+	g++ main.o src/Database.o -o lab4-4
 
-main.o: main.cpp src/SparseMatrix.hpp
+main.o: main.cpp src/Database.hpp
 	g++ -c main.cpp
