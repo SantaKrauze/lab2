@@ -1,12 +1,12 @@
 #include "src/Database.hpp"
 
 int main () {
-	Database <int, double> data;
-	data.addItem (2,3);
-	data.addItem (1,5.3);
-	data.addItem (7,1);
-	data.addItem (4,6.6);
-	data.addItem (5,4.76);
+	Database <int, std::string> data;
+	data.setValue (2,"two");
+	data.setValue (1,"one");
+	data.setValue (7,"seven");
+	data.setValue (4,"four");
+	data.setValue (5,"five");
 	//std::cout<<data.getValue (2)<<std::endl;
 	data.printAll();
 	return 0;
