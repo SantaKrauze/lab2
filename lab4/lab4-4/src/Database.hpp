@@ -6,10 +6,13 @@
 template <typename keyType, typename dataType> 
 class Database{
 	public:
-		//template <class keyType, class dataType>
-		void addItem (keyType key, dataType data);
-		void printByKey (keyType key);
+		void addItem (keyType key, dataType data){
+			dataBase[key] = data;
+		}
+		void printAt (keyType key){
+			std::cout<<dataBase.at(key)<<std::endl;
+		}
 	private:
-		std::map <keyType, dataType> data;
+		std::map <keyType, dataType> dataBase;
 };
 #endif
