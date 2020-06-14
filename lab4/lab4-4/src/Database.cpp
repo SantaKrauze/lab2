@@ -1,4 +1,9 @@
 #include "Database.hpp"
+//
+//
+//MOVED ALL TO HEADER
+//
+//
 /*
 template <typename keyType, typename dataType>
 void Database<keyType, dataType>::printByKey(keyType key){

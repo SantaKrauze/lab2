@@ -9,8 +9,11 @@ class Database{
 		void addItem (keyType key, dataType data){
 			dataBase[key] = data;
 		}
-		void printAt (keyType key){
-			std::cout<<dataBase.at(key)<<std::endl;
+		void printAll(){
+			for (auto i : dataBase) std::cout<<i.first<<'-'<<dataBase.at(i.first)<<'\n';
+		}
+		dataType getValue (keyType key){
+			return dataBase.at(key);
 		}
 	private:
 		std::map <keyType, dataType> dataBase;
