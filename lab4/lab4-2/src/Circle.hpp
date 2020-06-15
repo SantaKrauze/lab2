@@ -5,8 +5,6 @@
 class Circle : public Figure {
 	public:	
 		Circle(double r){
-			//center[0] = x;
-			//center[1] = y;
 			radius = r;
 		}
 		double area(){
@@ -17,6 +15,5 @@ class Circle : public Figure {
 			return out;
 		}*/
 		double radius;
-		//std::array <double,2> center;
 };
 #endif

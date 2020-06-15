@@ -7,8 +7,6 @@ class Rectangle : virtual public Figure {
 		Rectangle(double a, double b){
 			A = a;
 			B = b;
-			//C = c;
-			//D = d;
 		}
 		virtual double area(){
 			return A*B;
@@ -17,6 +15,6 @@ class Rectangle : virtual public Figure {
 			std::ostream& out;
 			return out;
 		}*/
-		double A, B, C, D;
+		double A, B;
 };
 #endif
