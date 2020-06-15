@@ -7,8 +7,10 @@
 class Figure{
 	public:
 		virtual double area() = 0;
-		//virtual std::ostream& print(std::ostream&) = 0;
-		friend std::ostream& operator<< (std::ostream& out, Figure& figure);
+		virtual std::ostream& print(std::ostream&) = 0;
+		friend std::ostream& operator<< (std::ostream& out, Figure& figure){
+			return figure.print(out);
+		}
 
 };
 #endif

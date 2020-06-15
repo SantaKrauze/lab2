@@ -13,10 +13,9 @@ class Triangle : virtual public Figure {
 			double p=(A+B+C)/2;
 			return sqrt(p*(p-A)*(p-B)*(p-C));
 		}
-		/*virtual std::ostream& print(){
-			std::ostream& out;
-			return out;
-		}*/
+		std::ostream& print(std::ostream& out){
+			return out<<A<<'x'<<B<<'x'<<C;
+		}
 		double A, B, C;
 };
 #endif

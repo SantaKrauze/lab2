@@ -10,10 +10,9 @@ class Circle : public Figure {
 		double area(){
 			return 3.1215*radius*radius;
 		}
-		/*virtual std::ostream& print(){
-			std::ostream& out;
-			return out;
-		}*/
+		std::ostream& print(std::ostream& out){
+			return out<<"Radius: "<<radius;
+		}
 		double radius;
 };
 #endif

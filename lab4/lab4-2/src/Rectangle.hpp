@@ -11,10 +11,9 @@ class Rectangle : virtual public Figure {
 		virtual double area(){
 			return A*B;
 		}
-		/*virtual std::ostream& print(){
-			std::ostream& out;
-			return out;
-		}*/
+		std::ostream& print(std::ostream& out){
+			return out<<A<<'x'<<B;
+		}
 		double A, B;
 };
 #endif

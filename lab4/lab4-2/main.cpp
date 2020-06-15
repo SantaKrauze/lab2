@@ -13,8 +13,8 @@ int main () {
 	Rectangle rect(2,2);
 	Figure* figure3;
 	figure3 = &rect;
-	std::cout<<"Circle area: "<<figure1->area()<<std::endl;
-	std::cout<<"Triangle area: "<<figure2->area()<<std::endl;
-	std::cout<<"Rectangle area: "<<figure3->area()<<std::endl;
+	std::cout<<"Circle area: "<<figure1->area()<<'\t'<<*figure1<<std::endl;
+	std::cout<<"Triangle area: "<<figure2->area()<<'\t'<<*figure2<<std::endl;
+	std::cout<<"Rectangle area: "<<figure3->area()<<'\t'<<*figure3<<std::endl;
 	return 0;
 }
