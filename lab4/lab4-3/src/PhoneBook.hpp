@@ -11,6 +11,9 @@ class PhoneBook {
 		~PhoneBook();
 		void setData(std::string key, std::string data);
 		void printFile();
+		void eraseData(std::string key){
+			phonebook.erase(key);
+		}
 	private:
 		std::map <std::string, std::string> phonebook;
 		std::ofstream outBook;
