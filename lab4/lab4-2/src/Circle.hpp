@@ -2,14 +2,14 @@
 #define CIRCLE_HPP
 #include "Figure.hpp"
 
-class Circle :virtual public Figure {
+class Circle : public Figure {
 	public:	
 		Circle(double r){
 			//center[0] = x;
 			//center[1] = y;
 			radius = r;
 		}
-		virtual double area(){
+		double area(){
 			return 3.1215*radius*radius;
 		}
 		/*virtual std::ostream& print(){
